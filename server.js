@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) => res.json("404"));
 }
 
-console.log(path.resolve(__dirname, "tods", "build", "index.html"));
+//console.log(path.resolve(__dirname, "tods", "build", "index.html"));
 //Mongoose
 const connectDb = async () => {
   try {
