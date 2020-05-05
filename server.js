@@ -1,13 +1,11 @@
 //Imports
-const path = require('path');
+const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const colors = require("colors");
 const bodyParser = require("body-parser");
-const serveStatic = require('serve-static')
-
-
+const serveStatic = require("serve-static");
 
 dotenv.config({ path: "./config.env" });
 
@@ -22,16 +20,11 @@ app.use("/todos", todo_routes);
 app.use("/user", user_routes);
 
 //production
-if(process.env.NODE_ENV==='production'){
-  app.use(express.static('tods/build'))
-  app.get('*',(req,res)=> res.sendFile(path.resolve(
-    __dirname,'tods','build','index.html'
-  )))
+if (process.env.NODE_ENV === "production") {
+  app.get("*", (req, res) => res.json("404"));
 }
 
-console.log(path.resolve(
-  __dirname,'tods','build','index.html'
-))
+console.log(path.resolve(__dirname, "tods", "build", "index.html"));
 //Mongoose
 const connectDb = async () => {
   try {
@@ -39,7 +32,7 @@ const connectDb = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
-      useFindAndModify: false
+      useFindAndModify: false,
     });
     console.log(`MonogoDb Connected: ${conn.connection.host}`.blue.bold);
   } catch (err) {
@@ -49,5 +42,5 @@ const connectDb = async () => {
 connectDb();
 
 //Server
-const PORT = process.env.SERVER_PORT||8080;
+const PORT = process.env.SERVER_PORT || 8080;
 app.listen(PORT, console.log(`Server running on ${PORT}`.blue.bold));
