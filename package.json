@@ -4,12 +4,9 @@
   "description": "A Full Stack Todo App",
   "main": "server.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \" npm run server \" \" npm run client\" ",
+    "start": "node server.js",
     "server": "nodemon server",
-    "client": "cd tods && npm install && npm start",
-    "dev": "concurrently \" npm run server \" \" npm run client\" "
+    "client": "cd tods && npm install && npm start"
   },
   "author": "Abdul Wasey",
   "license": "ISC",
