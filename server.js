@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 //Routes
 const todo_routes = require("./routes/todoRoutes");
 const user_routes = require("./routes/userRoutes");
-app.use("/todos", todo_routes);
-app.use("/user", user_routes);
+app.use("/api/todos", todo_routes);
+app.use("/api/user", user_routes);
 
 //production
 if (process.env.NODE_ENV === "production") {
@@ -42,5 +42,5 @@ const connectDb = async () => {
 connectDb();
 
 //Server
-const PORT = process.env.SERVER_PORT || 8080;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, console.log(`Server running on ${PORT}`.blue.bold));
